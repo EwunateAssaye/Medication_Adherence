@@ -1,6 +1,5 @@
 streamlit
 pandas
 gspread
-smtplib
 email
 google
