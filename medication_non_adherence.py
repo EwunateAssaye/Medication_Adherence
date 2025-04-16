@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
+from tkinter import messagebox
 import gspread
+import joblib
 import pickle
 import smtplib
 from email.mime.text import MIMEText
@@ -8,13 +10,16 @@ from email.mime.multipart import MIMEMultipart
 from google.oauth2.service_account import Credentials
 
 # Load ML Model
-@st.cache_resource
-def load_model():
-    with open("Random Forest Classifier.pkl", "rb") as file:
-        model = pickle.load(file)
-    return model
+model = joblib.load("SVC_model.pkl")
 
-model = load_model()
+# # Load ML Model
+# @st.cache_resource
+# def load_model():
+#     with open("Random Forest Classifier.pkl", "rb") as file:
+#         model = pickle.load(file)
+#     return model
+
+# model = load_model()
 
 # Google Sheets Authentication
 def connect_gsheet(sheet_url):
